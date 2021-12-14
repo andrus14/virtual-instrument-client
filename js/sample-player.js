@@ -33,10 +33,10 @@ document.addEventListener('keydown', (event) => {
       case 's':
         socket.emit("send-data", {"sample": 1} );
         break;
+        case 'd':
+          socket.emit("send-data", {"sample": 2} );
+          break;
       // kannel qwe
-      case 'd':
-        socket.emit("send-data", {"sample": 2} );
-        break;
       case 'q':
         socket.emit("send-data", {"kannel": 0} );
         break;
@@ -55,6 +55,13 @@ document.addEventListener('keydown', (event) => {
         break;
       case 'c':
         socket.emit("send-data", {"drum": 2} );
+        break;
+      // led on and off
+      case '+':
+        socket.emit("send-data", {"python": "on"} );
+        break;
+      case '-':
+        socket.emit("send-data", {"python": "off"} );
         break;
     }
   } else { 
