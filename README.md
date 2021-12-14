@@ -20,6 +20,10 @@ Click/touch: ```A, S, D``` buttons on the screen
 ## Visualisation
 Displays a simple visualization 
 
+## Sample sounds from Ian
+
+https://drive.google.com/drive/folders/1GsKzjNp6p_WkLCfpiQ528QcHLn36-eG-
+
 ## Installation
 
 No extra steps needed, just run it in some http server. 
