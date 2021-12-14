@@ -8,7 +8,7 @@ const socket = io("http://localhost:8000");
 
 socket.on("connect", () => {
   console.log("Client connected to: " + socket.id);
-  online = true;
+  // online = true;
 });
 
 socket.on('send-data', res => {

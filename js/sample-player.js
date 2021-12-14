@@ -4,7 +4,7 @@ let online = true;
 const pianoFiles = [
   "pack-1/c.mp3", "pack-1/d.mp3", "pack-1/e.mp3"
 ];
-let piano = Array(files.length);
+let piano = Array(pianoFiles.length);
 
 const kannelFiles = ["kannel/00-A.wav", "kannel/01-D.wav", "kannel/02-E.wav"];
 let kannel = Array(kannelFiles.length);
@@ -87,11 +87,11 @@ keys.forEach((key, idx) => {
 
 function recieveData(data){
   console.log(data);
-  if(data.sample){
+  if(data.sample > -1 ){
     playSample(data.sample);
-  } else if(data.kannel){
+  } else if(data.kannel > -1){
     playKannel(data.kannel);
-  } else if(data.drum){
+  } else if(data.drum > -1){
     playDrum(data.drum);
   }
   
@@ -100,7 +100,7 @@ function recieveData(data){
 
 // play sample file
 function playSample(s){
-  sounds[s].play();
+  piano[s].play();
 }
 function playKannel(s){
   kannel[s].play();
@@ -114,13 +114,13 @@ function playDrum(s){
 function preloadSampleFiles() {
   soundFormats('mp3', 'ogg');
   for (let i = 0; i < pianoFiles.length; ++i){
-    sounds[i] = loadSound("./samples/" + files[i]);
+    piano[i] = loadSound("./samples/" + pianoFiles[i]);
   }
   for (let i = 0; i < kannelFiles.length; ++i){
     kannel[i] = loadSound("./samples/" + kannelFiles[i]);
   }
-  for (let d = 0; d < drumFiles.length; ++d){
-    drums[d] = loadSound("./samples/" + drumFiles[d]);
+  for (let i = 0; i < drumFiles.length; ++i){
+    drums[i] = loadSound("./samples/" + drumFiles[i]);
   }
 }
 
