@@ -1,10 +1,16 @@
 let online = true;
 
 // define sample files
-const files = [
+const pianoFiles = [
   "pack-1/c.mp3", "pack-1/d.mp3", "pack-1/e.mp3"
 ];
-let sounds = Array(files.length);
+let piano = Array(files.length);
+
+const kannelFiles = ["kannel/00-A.wav", "kannel/01-D.wav", "kannel/02-E.wav"];
+let kannel = Array(kannelFiles.length);
+
+const drumFiles = ["drums/drum-01.wav", "drums/drum-02.wav", "drums/drum-03.wav"];
+let drums = Array(drumFiles.length);
 
 
 // P5.js sound analyzer 
@@ -20,14 +26,35 @@ document.addEventListener('keydown', (event) => {
   
   if(online == true){
     switch (keyName) {
+      // piano asd
       case 'a':
         socket.emit("send-data", {"sample": 0} );
         break;
       case 's':
         socket.emit("send-data", {"sample": 1} );
         break;
+      // kannel qwe
       case 'd':
         socket.emit("send-data", {"sample": 2} );
+        break;
+      case 'q':
+        socket.emit("send-data", {"kannel": 0} );
+        break;
+      case 'w':
+        socket.emit("send-data", {"kannel": 1} );
+        break;
+      case 'e':
+        socket.emit("send-data", {"kannel": 2} );
+        break;
+      // drums zxc
+      case 'z':
+        socket.emit("send-data", {"drum": 0} );
+        break;
+      case 'x':
+        socket.emit("send-data", {"drum": 1} );
+        break;
+      case 'c':
+        socket.emit("send-data", {"drum": 2} );
         break;
     }
   } else { 
@@ -59,7 +86,15 @@ keys.forEach((key, idx) => {
 
 
 function recieveData(data){
-  playSample(data.sample);
+  console.log(data);
+  if(data.sample){
+    playSample(data.sample);
+  } else if(data.kannel){
+    playKannel(data.kannel);
+  } else if(data.drum){
+    playDrum(data.drum);
+  }
+  
 }
 
 
@@ -67,15 +102,28 @@ function recieveData(data){
 function playSample(s){
   sounds[s].play();
 }
+function playKannel(s){
+  kannel[s].play();
+}
+function playDrum(s){
+  drums[s].play();
+}
 
 
 // preload music sample files and add them to sounds array
 function preloadSampleFiles() {
   soundFormats('mp3', 'ogg');
-  for (let i = 0; i < files.length; ++i){
+  for (let i = 0; i < pianoFiles.length; ++i){
     sounds[i] = loadSound("./samples/" + files[i]);
   }
+  for (let i = 0; i < kannelFiles.length; ++i){
+    kannel[i] = loadSound("./samples/" + kannelFiles[i]);
+  }
+  for (let d = 0; d < drumFiles.length; ++d){
+    drums[d] = loadSound("./samples/" + drumFiles[d]);
+  }
 }
+
 
 
 
