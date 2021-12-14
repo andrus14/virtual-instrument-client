@@ -87,11 +87,11 @@ keys.forEach((key, idx) => {
 
 function recieveData(data){
   console.log(data);
-  if(data.sample > -1 ){
+  if(data.hasOwnProperty("sample") ){
     playSample(data.sample);
-  } else if(data.kannel > -1){
+  } else if(data.hasOwnProperty("kannel")){
     playKannel(data.kannel);
-  } else if(data.drum > -1){
+  } else if(data.hasOwnProperty("drum")){
     playDrum(data.drum);
   }
   
