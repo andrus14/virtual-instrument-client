@@ -12,13 +12,15 @@ body {
     position: relative;
     background-color: black;
     height: 100vh;
+    overflow: hidden;
 }
 .keys{
+    
     position: absolute;
     bottom:5vh;
     left:0;
     width: 100%;
-    display: flex;
+    display: none;
     gap: 2vw;
     padding: 2vw;
 }

@@ -1,6 +1,6 @@
 // Socket.io server configuration
-const socket = io("http://localhost:8000");
-// const socket = io("https://kak-socketio-server.herokuapp.com");
+// const socket = io("http://localhost:8000");
+const socket = io("https://kak-socketio-server.herokuapp.com");
 // const socket = io("http://10.25.184.72:8000"); // Nauka test
 // const socket = io("http://10.25.185.227:8000"); // Kristjani tiim
 
