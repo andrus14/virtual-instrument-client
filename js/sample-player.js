@@ -1,5 +1,3 @@
-let online = true;
-
 // define sample files
 const pianoFiles = [
   "pack-1/c.mp3", "pack-1/d.mp3", "pack-1/e.mp3"
@@ -24,7 +22,7 @@ let spectrum, energy, size;
 document.addEventListener('keydown', (event) => {
   const keyName = event.key;
   
-  if(online == true){
+  if(isOnline == true){
     switch (keyName) {
       // piano asd
       case 'a':
@@ -86,7 +84,11 @@ const keys = document.querySelectorAll(".key");
 
 keys.forEach((key, idx) => {  
   key.addEventListener('click', () => {   
-    socket.emit("send-data", {"sample": idx} );
+    if ( isOnline ) {
+      socket.emit("send-data", {"sample": idx} );
+    } else {
+      playSample(idx);
+    }
   });
 });
 
