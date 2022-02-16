@@ -4,6 +4,7 @@ const pianoFiles = [
 ];
 let piano = Array(pianoFiles.length);
 
+// test comment
 const kannelFiles = ["kannel/00-A.wav", "kannel/01-D.wav", "kannel/02-E.wav"];
 let kannel = Array(kannelFiles.length);
 
